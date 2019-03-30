@@ -12,21 +12,25 @@ namespace C0732134
         public static void Main(string[] args)
         {
             Console.WriteLine("Downloading a File.");
-            ToDownload();            
+            ToDownloadAsync();            
             Console.ReadLine();
         }
 
-        public static void ToDownload()
+        public static async void ToDownloadAsync()
         {
-            Task.Run(() =>                                                      // Anonymous Function
-            {
-                Thread.Sleep(2000);
-                Console.WriteLine("Download Completed.....");
-
-            });
-            
+            await Network.ToDownload();
+            Console.WriteLine("Download Complete");
         }
     }
 
-   
+    class Network
+    {
+        static public Task ToDownload()
+        {
+            return Task.Run(() => Thread.Sleep(3000)); 
+        }
+    }
+
+
+
 }
