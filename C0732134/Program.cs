@@ -11,25 +11,22 @@ namespace C0732134
     {
         public static void Main(string[] args)
         {
-            ToDownload();
-            
+            Console.WriteLine("Downloading a File.");
+            ToDownload();            
             Console.ReadLine();
         }
 
         public static void ToDownload()
         {
-            Thread.Sleep(3000);
+            Task.Run(() =>                                                      // Anonymous Function
+            {
+                Thread.Sleep(2000);
+                Console.WriteLine("Download Completed.....");
+
+            });
+            
         }
     }
 
-    public class HelloWorld
-    {
-
-        public void sayHello()
-        {
-            Console.WriteLine("Hello World!");
-        }
-
-       
-    }
+   
 }
