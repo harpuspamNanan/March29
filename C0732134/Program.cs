@@ -27,14 +27,17 @@ namespace C0732134
 
     class Network
     {
-        ArrayList WebPageContents = new ArrayList();
+        static ArrayList  WebPageContents = new ArrayList();
 
         public static async Task ToDownload()
         {
             HttpClient client = new HttpClient();
             string data = await client.GetStringAsync("https://github.com/hps3103/March29/blob/master/C0732134/Program.cs");
-           
-            Console.WriteLine(data);
+
+            foreach (var i in data)
+            {
+                WebPageContents.Add(i);
+            }
         }
        
     }
